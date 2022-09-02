@@ -28,7 +28,7 @@ def load_prediction(client_id):
 st.sidebar.header("**Credit scoring dashboard**")
 
 # Selectbox
-client_id = st.sidebar.text_input("Mettez un ID crédit")
+client_id = st.sidebar.text_input("Entrez un ID crédit")
 
 # Explication des features
 st.sidebar.subheader("**Description d'une feature**")
@@ -162,6 +162,8 @@ if client_id:
             fig = plt.figure(figsize=(6, 6))
             plt.scatter(x=data[option2], y=data[option3], c=score, cmap='YlGnBu')
             plt.scatter(x=data_X[option2], y=data_X[option3], c="red", zorder=10)
+            plt.xlabel(option2)
+            plt.ylabel(option3)
             st.pyplot(fig)
 
 
