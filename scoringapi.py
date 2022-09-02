@@ -1,8 +1,10 @@
 # http://127.0.0.1:5000/predict/id
 # import main Flask class and request object
+
 import pandas as pd
 from flask import Flask, request, jsonify
 import pickle
+from zipfile import ZipFile
 
 # create the Flask app: obtain the API server
 app = Flask(__name__)
@@ -12,15 +14,22 @@ pickle_in = open('model_final', 'rb')
 clf = pickle.load(pickle_in)
 
 # Données X standardisées
-X = pd.read_csv("X.csv", index_col='SK_ID_CURR', sep=",")
+z = ZipFile("data.zip")
+X = pd.read_csv(z.open('X.csv'), index_col='SK_ID_CURR', sep=",", encoding='utf-8')
+# X = pd.read_csv("X.csv", index_col='SK_ID_CURR', sep=",")
 X = X.drop({'Unnamed: 0'}, axis=1)
 
 # Données non stardadisées
-data = pd.read_csv("data.csv", index_col='SK_ID_CURR', sep=",", usecols=[
+data = pd.read_csv(z.open('data.csv'), index_col='SK_ID_CURR', sep=",", encoding='utf-8', usecols=[
     "SK_ID_CURR", "CODE_GENDER", "DAYS_BIRTH",
     "DAYS_EMPLOYED",
     "CNT_CHILDREN","AMT_INCOME_TOTAL","AMT_CREDIT"
 ])
+# data = pd.read_csv("data.csv", index_col='SK_ID_CURR', sep=",", usecols=[
+#    "SK_ID_CURR", "CODE_GENDER", "DAYS_BIRTH",
+#    "DAYS_EMPLOYED",
+#    "CNT_CHILDREN","AMT_INCOME_TOTAL","AMT_CREDIT"
+# ])
 
 @app.route('/') #Créer Accueil
 def home():

@@ -20,6 +20,7 @@ import plotly.express as px  # interactive charts
 import streamlit as st  # 🎈 data web app development
 import requests
 import json
+from zipfile import ZipFile
 
 #app = st(__name__)
 
@@ -44,6 +45,15 @@ def load_prediction(client_id):
 st.sidebar.header("**Credit scoring dashboard**")
 #Loading selectbox
 client_id = st.sidebar.text_input("Mettez un ID crédit")
+
+st.sidebar.subheader("**Description d'une feature**")
+description = pd.read_csv("HomeCredit_columns_description.csv", index_col='Row', sep=",")
+choix = st.sidebar.selectbox('Choisissez une feature que vous voulez avoir une explication', description.index)
+explication = description.loc[choix]
+# if len(explication['Description']) > 1:
+#    st.sidebar.write("Description : ", explication['Description'])
+st.sidebar.write("Description : ", explication['Description'])
+
 if client_id:
     client_id = int(client_id)
     # st.write("Client ID : ", client_id)
@@ -82,7 +92,8 @@ if client_id:
 
     # Feature importance / description
     # Données X standardisées
-    main_data = pd.read_csv("X.csv", index_col='SK_ID_CURR', sep=",", nrows=100)
+    z = ZipFile("data.zip")
+    main_data = pd.read_csv(z.open('X.csv'), index_col='SK_ID_CURR', sep=",", encoding='utf-8', nrows=100)
     main_data = main_data.drop({'Unnamed: 0'}, axis=1)
 
 
@@ -144,7 +155,7 @@ if client_id:
         st.subheader("**Distribution de la feature sélectionnée**")
 
         # Données non stardadisées
-        data = pd.read_csv("data.csv", index_col='SK_ID_CURR', sep=",", nrows=100)
+        data = pd.read_csv(z.open("data.csv"), index_col='SK_ID_CURR', sep=",", nrows=100)
         #data_1 = data.query('TARGET == 1.0')
         #data_0 = data.query('TARGET == 0.0')
         data = data.drop({'Unnamed: 0'}, axis=1)
