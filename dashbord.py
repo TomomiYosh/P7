@@ -7,7 +7,7 @@ import requests
 import json
 from zipfile import ZipFile
 
-url = 'https://hidden-plateau-35955.herokuapp.com:5000'
+url = 'https://p7-credit-scoring-ty.herokuapp.com'
 
 # Création de page
 st.set_page_config(

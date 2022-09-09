@@ -1,2 +1,2 @@
-api: gunicorn scoringapi:app -b 0.0.0.0:5000
+api: gunicorn scoringapi:app
 web: streamlit run dashbord.py --server.port $PORT
