@@ -138,6 +138,7 @@ if client_id:
         data = data.drop({'Unnamed: 0'}, axis=1)
         data2 = data.drop({'TARGET'}, axis=1)
         data_X = data.loc[client_id]
+        z.close()
 
         # Selectbox et graphique box plot
         import seaborn as sns

@@ -24,6 +24,7 @@ data = pd.read_csv(z.open('data.csv'), index_col='SK_ID_CURR', sep=",", encoding
     "DAYS_EMPLOYED",
     "CNT_CHILDREN","AMT_INCOME_TOTAL","AMT_CREDIT"
 ])
+z.close()
 
 
 @app.route('/') #Créer Accueil
