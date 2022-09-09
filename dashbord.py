@@ -98,7 +98,7 @@ if client_id:
     ### Des information supplémentaires ###
     # Obtenir des infos de bases
         def load_infobase(client_id) :
-            client_info = requests.get(f'http://127.0.0.1:5000/client/{client_id}')
+            client_info = requests.get(f'https://hidden-plateau-35955.herokuapp.com:5000/client/{client_id}')
             return json.loads(client_info.content)
 
         client_infos = load_infobase(client_id)
