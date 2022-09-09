@@ -7,6 +7,8 @@ import requests
 import json
 from zipfile import ZipFile
 
+url = 'https://hidden-plateau-35955.herokuapp.com:5000'
+
 # Création de page
 st.set_page_config(
     page_title="Credit Scoring Dashboard",
@@ -20,7 +22,7 @@ st.title("Informations client")
 
 # Obtenir id, score et résultat
 def load_prediction(client_id):
-    client_data = requests.get(f'http://127.0.0.1:5000/predict/{client_id}')
+    client_data = requests.get(f'{url}/predict/{client_id}')
     return json.loads(client_data.content)
 
 
@@ -98,7 +100,7 @@ if client_id:
     ### Des information supplémentaires ###
     # Obtenir des infos de bases
         def load_infobase(client_id) :
-            client_info = requests.get(f'https://hidden-plateau-35955.herokuapp.com:5000/client/{client_id}')
+            client_info = requests.get(f'{url}/client/{client_id}')
             return json.loads(client_info.content)
 
         client_infos = load_infobase(client_id)
