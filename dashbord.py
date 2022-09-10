@@ -77,7 +77,7 @@ if client_id:
     # Feature importance locale
     # Données X standardisées
     z = ZipFile("data.zip")
-    main_data = pd.read_csv(z.open('X.csv'), index_col='SK_ID_CURR', sep=",", encoding='utf-8', nrows=100)
+    main_data = pd.read_csv(z.open('X.csv'), index_col='SK_ID_CURR', sep=",", encoding='utf-8')
     main_data = main_data.drop({'Unnamed: 0'}, axis=1)
 
     import shap
@@ -134,7 +134,7 @@ if client_id:
         st.subheader("**Distribution de la feature sélectionnée**")
 
         # Données non standardisées
-        data = pd.read_csv(z.open("data.csv"), index_col='SK_ID_CURR', sep=",", nrows=100)
+        data = pd.read_csv(z.open("data.csv"), index_col='SK_ID_CURR', sep=",")
         data = data.drop({'Unnamed: 0'}, axis=1)
         data2 = data.drop({'TARGET'}, axis=1)
         data_X = data.loc[client_id]
