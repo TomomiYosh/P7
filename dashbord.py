@@ -84,15 +84,17 @@ if client_id:
 
     import shap
     if st.checkbox("Afficher feature importance de ce client ?"):
-        shap.initjs()
-        X = main_data.loc[[client_id]]
-        st.subheader("**Feature importance locale**")
-        fig, ax = plt.subplots(figsize=(10, 20))
-        explainer = shap.TreeExplainer(clf)
-        shap_values = explainer.shap_values(X)
-        shap.summary_plot(shap_values[0], X, plot_type="bar", max_display=20, color_bar=False, plot_size=(5, 5))
-        st.pyplot(fig)
-        X = False
+        col6, col7 = st.columns(2)
+        with col6:
+            shap.initjs()
+            X = main_data.loc[[client_id]]
+            st.subheader("**Feature importance locale**")
+            fig, ax = plt.subplots(figsize=(10, 20))
+            explainer = shap.TreeExplainer(clf)
+            shap_values = explainer.shap_values(X)
+            shap.summary_plot(shap_values[0], X, plot_type="bar", max_display=20, color_bar=False, plot_size=(5, 5))
+            st.pyplot(fig)
+            X = False
 
     # Informations détaillées d'un client
     st.subheader("**Informations détailées du client**")
