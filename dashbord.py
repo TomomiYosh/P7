@@ -36,7 +36,7 @@ client_id = st.sidebar.text_input("Entrez un ID crédit")
 st.sidebar.subheader("**Description d'une feature**")
 description = pd.read_csv("HomeCredit_columns_description.csv", sep=",")
 description = description.query('Row != SK_ID_CURR')
-choix = st.sidebar.selectbox('Choisissez une feature que vous voulez avoir une explication', description.Row)
+choix = st.sidebar.selectbox('Choisissez une feature que vous voulez avoir une explication', description['Row'])
 explication = description.loc[choix]
 st.sidebar.write("Description : ", explication['Description'])
 
