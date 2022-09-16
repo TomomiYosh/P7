@@ -90,7 +90,7 @@ if client_id:
         fig, ax = plt.subplots(figsize=(10, 20))
         explainer = shap.TreeExplainer(clf)
         shap_values = explainer.shap_values(X)
-        shap.summary_plot(shap_values, X, plot_type="bar", max_display=20, color_bar=False, plot_size=(5, 5))
+        shap.summary_plot(shap_values[0], X, plot_type="bar", max_display=20, color_bar=False, plot_size=(5, 5))
         st.pyplot(fig)
         X = False
 
@@ -128,7 +128,7 @@ if client_id:
         fig, ax = plt.subplots(figsize=(12, 12))
         explainer = shap.TreeExplainer(clf)
         shap_values_m = explainer.shap_values(main_data)
-        shap.summary_plot(shap_values_m, features=main_data, feature_names=main_data.columns, plot_type='bar')
+        shap.summary_plot(shap_values_m[0], features=main_data, feature_names=main_data.columns, plot_type='bar')
         st.pyplot(fig)
 
     with col2:
