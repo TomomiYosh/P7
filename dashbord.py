@@ -29,8 +29,10 @@ def load_prediction(client_id):
 # Selection d'un ID crédit
 st.sidebar.header("**Credit scoring dashboard**")
 
+main_data = pd.read_csv(z.open('X.csv'), index_col='SK_ID_CURR', sep=",", encoding='utf-8')
+
 # Selectbox
-client_id = st.sidebar.text_input("Entrez un ID crédit")
+client_id = st.sidebar.selectbox("Entrez un ID crédit", main_data.index)
 
 # Explication des features
 st.sidebar.subheader("**Description d'une feature**")
@@ -79,7 +81,6 @@ if client_id:
     # Feature importance locale
     # Données X standardisées
     z = ZipFile("data.zip")
-    main_data = pd.read_csv(z.open('X.csv'), index_col='SK_ID_CURR', sep=",", encoding='utf-8')
     main_data = main_data.drop({'Unnamed: 0'}, axis=1)
 
     import shap
