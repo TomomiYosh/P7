@@ -128,9 +128,11 @@ if client_id:
     with col1:
         st.subheader("**Feature importance globale**")
         fig, ax = plt.subplots(figsize=(12, 12))
-        explainer = shap.TreeExplainer(clf)
-        shap_values_m = explainer.shap_values(main_data)
-        shap.summary_plot(shap_values_m[0], features=main_data, feature_names=main_data.columns, plot_type='bar')
+        # explainer = shap.TreeExplainer(clf)
+        # shap_values_m = explainer.shap_values(main_data)
+        shap_v = pd.read_csv(z.open('shap_vakues.csv'), sep=",", encoding='utf-8')
+        plt.barh(shap_v['index'], shap_v['moyenne_shap_values'])
+        # shap.summary_plot(shap_values_m[0], features=main_data, feature_names=main_data.columns, plot_type='bar')
         st.pyplot(fig)
 
     with col2:
