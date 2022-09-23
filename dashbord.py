@@ -29,6 +29,8 @@ def load_prediction(client_id):
 # Selection d'un ID crédit
 st.sidebar.header("**Credit scoring dashboard**")
 
+# Données X standardisées
+z = ZipFile("data.zip")
 main_data = pd.read_csv(z.open('X.csv'), index_col='SK_ID_CURR', sep=",", encoding='utf-8')
 
 # Selectbox
@@ -79,8 +81,6 @@ if client_id:
     clf = pickle.load(pickle_in)
 
     # Feature importance locale
-    # Données X standardisées
-    z = ZipFile("data.zip")
     main_data = main_data.drop({'Unnamed: 0'}, axis=1)
 
     import shap
