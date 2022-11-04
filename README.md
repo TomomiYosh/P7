@@ -16,10 +16,10 @@ Ensuite pour la partie dashboard, une API et un dashboard ont été déployés s
 * Pour API :
 https://p7-credit-scoring-ty.herokuapp.com
 
- * Accès aux données : 
- * https://p7-credit-scoring-ty.herokuapp.com/predict/<int:client_id ex:100002> pour le score et le résultat
+    * Accès aux données : 
+    * https://p7-credit-scoring-ty.herokuapp.com/predict/<int:client_id ex:100002> pour le score et le résultat
 
- * https://p7-credit-scoring-ty.herokuapp.com/client/<int:client_id ex:100002> pour les informations détaillées d'un client
+    * https://p7-credit-scoring-ty.herokuapp.com/client/<int:client_id ex:100002> pour les informations détaillées d'un client
 
 * Pour le dashbord : 
 https://tomomiyosh-p7-dashbord-2hp8ej.streamlitapp.com/
