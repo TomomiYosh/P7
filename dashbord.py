@@ -123,7 +123,7 @@ if client_id:
     # Infos sur les autres clients
     # La feature importance globale
     st.header("**Informations des autres clients**")
-    shap.initjs()
+    # shap.initjs()
     col1, col2 = st.columns(2)
 
     with col1:
