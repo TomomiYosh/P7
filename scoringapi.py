@@ -33,7 +33,7 @@ def home():
 
 
 # API qui envoie le score, résultat du client choisi
-@app.route('/predict/<int:client_id>', methods=['GET', 'POST'])
+@app.route('/predict/<int:client_id>', methods=['GET'])
 def query_score(client_id):
     score = False
     resultat = False
