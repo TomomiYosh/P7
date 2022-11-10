@@ -64,7 +64,9 @@ def client_info(client_id):
             "AMT_INCOME_TOTAL": client['AMT_INCOME_TOTAL'],
             "AMT_CREDIT": client['AMT_CREDIT']})
 
-if __name__ == '__main__':
+# A partir d'ici est utilisé pour le développement de l'API. C'est créer un serveur temporaire
+# pour vérification de la fonctionnement.On n'a plus besoin.
+# if __name__ == '__main__':
     # Marcher l'app dans debug mode sur le port 5000
-    app.run(debug=True, port=5000) # Lance le server
+    # app.run(debug=True, port=5000) # Lance le server
 
